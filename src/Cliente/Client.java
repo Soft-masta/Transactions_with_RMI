@@ -57,7 +57,6 @@ public class Client {
         ta.setLocation(250, 100);
         
 
-       
         JTable compsInfo = ta.getCompaniesTable();
         JComboBox compsList = ta.getCompaniesList();
         JTextField numOfActions = ta.getStockNumber();
@@ -178,7 +177,19 @@ public class Client {
                             model.addRow(data);
                         });
                 
+                ArrayList<String> arr2 = null;
+                String notification = "";
+                try{
+                    arr2 = re.getWinners(username);
+                    for (int i = 0; i < arr2.size(); i++) {
+                        notification+=arr2.get(i)+"\n";
+                    }
+                }catch (RemoteException ex) {
+                    Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, notification);
         }
+            
         });
         
         btn4.addActionListener(new ActionListener(){

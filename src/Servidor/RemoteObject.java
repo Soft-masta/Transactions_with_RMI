@@ -78,5 +78,21 @@ public class RemoteObject extends UnicastRemoteObject implements IRemoteControll
 
         return arr;
     }
+    
+    public ArrayList<String> getWinners(String userRFC) {
+
+        try {
+            System.out.println("Invoke winnerCheckout from " + getClientHost());
+        } catch (ServerNotActiveException snae) {
+            snae.printStackTrace();
+        }
+
+        //ALGORITMO PARA CREAR UN ELEMENTO POR EMPRESA
+        ArrayList<String> arr = Repository.winnersCheckout(userRFC);
+        if (arr.isEmpty()) {
+            arr.add("No has ganado ninguna transacción");
+        }
+        return arr;
+    }
 
 }

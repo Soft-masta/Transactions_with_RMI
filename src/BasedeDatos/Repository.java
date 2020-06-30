@@ -3,6 +3,7 @@ package BasedeDatos;
 import Servidor.Enterprise;
 import Servidor.Operations;
 import Servidor.Investor;
+import static java.lang.Math.abs;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,9 +13,12 @@ import java.util.TimerTask;
 public class Repository extends Thread {
 
     public static boolean isTimerActive = false;
+    public static boolean isTimerWinnersActive = false;
     public static ArrayList<Operations> buyQueue = new ArrayList<Operations>();
     public static ArrayList<Operations> sellQueue = new ArrayList<Operations>();
     public static ArrayList<String> activeCompanies = new ArrayList<String>();
+    public static ArrayList<Operations> winnersBuy = new  ArrayList<Operations>();
+    public static ArrayList<Operations> winnersSell = new  ArrayList<Operations>();
 
     public static int createUser(Investor u) {
         int iRet = -1;
@@ -143,15 +147,18 @@ public class Repository extends Thread {
             }
             if (sellQueue.size() > 0) {
                 lowest = Collections.min(sellQueue);
+                winnersSell.add(lowest);
                 createInvestment(lowest);
                 System.out.println("Venta ganadora para " + lowest.getCompanyRFC() + " : " + lowest.getUserRFC() + " a " + lowest.getOperatedStocksPrice());
             }
             if (buyQueue.size() > 0) {
                 highest = Collections.max(buyQueue);
+                winnersBuy.add(highest);
                 createInvestment(highest);
                 System.out.println("Compra ganadora para " + highest.getCompanyRFC() + " : " + highest.getUserRFC() + " a " + highest.getOperatedStocksPrice());
 
             }
+            startTimerWinners();
             buyQueue = new ArrayList<Operations>();
             sellQueue = new ArrayList<Operations>();
             activeCompanies = new ArrayList<String>();
@@ -175,6 +182,25 @@ public class Repository extends Thread {
             }, 1 * 60 * 1000);
         }
     }
+    
+    public static void startTimerWinners() {
+        if (!isTimerWinnersActive) {
+            System.out.println("ganadores decididos");
+            isTimerWinnersActive = true;
+            Timer timer2 = new Timer();
+            timer2.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    winnersBuy = new  ArrayList<Operations>();
+                    winnersSell = new  ArrayList<Operations>();
+                    timer2.cancel();
+                    isTimerWinnersActive = false;
+                    System.out.println("Ganadores eliminados");
+                }
+            },1 * 60  * 1000);
+        }
+    }
+    
 
 //NUEVA TRANSACCIÖN
     public static int createInvestment(Operations t) {
@@ -230,8 +256,24 @@ public class Repository extends Thread {
         }
 
         return iRet;
+       
     }
 
+    public static ArrayList<String> winnersCheckout(String userRFC){
+        ArrayList<String> victories = new ArrayList<String>();
+        for (int i = 0; i < winnersSell.size(); i++) {
+            if (winnersSell.get(i).getUserRFC().equals(userRFC)) {
+                victories.add("Vendiste "+abs(winnersSell.get(i).getOperatedStocks())+" acciones para la compañia "+winnersSell.get(i).getCompanyRFC()+" a "+winnersSell.get(i).getOperatedStocksPrice());
+            }
+        }
+        for (int i = 0; i < winnersBuy.size(); i++) {
+            if (winnersBuy.get(i).getUserRFC().equals(userRFC)) {
+                victories.add("Compraste "+abs(winnersBuy.get(i).getOperatedStocks())+" acciones de la compañia "+winnersBuy.get(i).getCompanyRFC()+" a "+winnersBuy.get(i).getOperatedStocksPrice());
+            }
+        }
+        return victories;
+    }
+    
     public static ArrayList getInvestments(String userRFC) {
         ArrayList<Operations> arr = new ArrayList();
         try {

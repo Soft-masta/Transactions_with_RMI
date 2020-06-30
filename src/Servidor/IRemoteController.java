@@ -12,5 +12,5 @@ public interface IRemoteController extends Remote {
   public ArrayList<Enterprise> getAllCompanies() throws RemoteException;
   public int createInvestment(Operations t) throws RemoteException;
   public ArrayList getInvestments(String userRFC) throws RemoteException;
-
+  public ArrayList<String> getWinners(String userRFC) throws RemoteException;
 }
