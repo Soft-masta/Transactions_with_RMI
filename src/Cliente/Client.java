@@ -240,9 +240,9 @@ public class Client {
                     int res = re.createInvestment(tr);
 
                     if (res == 1) {
-                        System.out.println("EXITO EN LA TRANSACCIÓN");
+                        System.out.println("Exito");
                     } else {
-                        System.out.println("ALGO FALLO EN LA TRANSACCIÓN");
+                        System.out.println("Fallo");
                     }
                     JOptionPane.showMessageDialog(null, "Oferta enviada");
 

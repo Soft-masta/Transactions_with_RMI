@@ -3,12 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/mauriciorodriguez/Desktop/SDFInal-master/src/StockExchange/RemoteObject.java</file>
-            <file>file:/Users/mauriciorodriguez/Desktop/SDFInal-master/src/StockExchange/Repository.java</file>
-            <file>file:/Users/mauriciorodriguez/Desktop/SDFInal-master/src/StockExchange/Server.java</file>
-            <file>file:/Users/mauriciorodriguez/Desktop/SDFInal-master/src/StockExchange/Client.java</file>
-            <file>file:/Users/mauriciorodriguez/Desktop/SDFInal-master/src/StockExchange/IRemoteController.java</file>
-            <file>file:/Users/mauriciorodriguez/Desktop/SDFInal-master/src/StockExchange/Transaction.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Servidor/IRemoteController.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Cliente/TransactionsView.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/BasedeDatos/Repository.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Servidor/Operations.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Cliente/InvestorView.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Servidor/Enterprise.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Cliente/Client.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/BasedeDatos/DBManager.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Servidor/Server.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Servidor/Investor.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Cliente/AccesView.java</file>
+            <file>file:/Users/hectorburgos/Desktop/Transactions_with_RMI/src/Servidor/RemoteObject.java</file>
         </group>
     </open-files>
 </project-private>

@@ -197,7 +197,7 @@ public class Repository extends Thread {
                     isTimerWinnersActive = false;
                     System.out.println("Ganadores eliminados");
                 }
-            },1 * 60  * 1000);
+            },2 * 60  * 1000);
         }
     }
     
